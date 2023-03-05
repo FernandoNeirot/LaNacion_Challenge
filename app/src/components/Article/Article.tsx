@@ -1,6 +1,11 @@
 import React, { type ReactElement } from 'react'
+import { type IArticle } from '../../interfaces/IArticle'
 
-export const Product = (): ReactElement => {
+export interface IProps {
+  article: IArticle
+}
+
+export const Article: React.FC<IProps> = ({ article }): ReactElement => {
   return (
     <article className="mod-caja-nota lugares w-100-mobile">
       <section id="" className="cont-figure">

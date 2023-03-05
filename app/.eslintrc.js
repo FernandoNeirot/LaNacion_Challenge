@@ -26,6 +26,7 @@ module.exports = {
     '@typescript-eslint'
   ],
   rules: {
-    'prettier/prettier': 'error'
+    'prettier/prettier': 'error',
+    '@typescript-eslint/restrict-template-expressions': 0
   }
 }
