@@ -1,7 +1,7 @@
 import React, { type ReactElement } from 'react'
 import { type IArticle } from '../../interfaces/IArticle'
 import NotFound from '../../assets/NotFound.jpg'
-import { getMonthsFormatted } from '../../utils/functios'
+import { getMonthsFormatted } from '../../utils/functions'
 export interface IProps {
   article: IArticle
 }

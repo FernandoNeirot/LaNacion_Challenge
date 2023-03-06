@@ -2,7 +2,7 @@ import React, { type ReactElement } from 'react'
 import { useArticleContext } from '../../contexts/ArticleProvider'
 import useServices from '../../custumHook/useService'
 import { type IArticle } from '../../interfaces/IArticle'
-import { getTags } from '../../utils/functios'
+import { getTags } from '../../utils/functions'
 
 import { Article } from '../Article/Article'
 

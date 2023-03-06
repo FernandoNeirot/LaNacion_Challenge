@@ -5,10 +5,10 @@ import { MONTHS } from './constants'
 export const getMonthsFormatted = (date: Date | string): string => {
   const newDate = new Date(date)
   const month = MONTHS.find(
-    (month: IMonth) => month.id === newDate.getMonth()
+    (month: IMonth) => month.id === newDate.getUTCMonth()
   )?.label
 
-  return `${newDate.getDate()} de ${month} de ${newDate.getFullYear()}`
+  return `${newDate.getUTCDate()} de ${month} de ${newDate.getUTCFullYear()}`
 }
 
 export const capitalizeFirstLetter = (str: string): string => {

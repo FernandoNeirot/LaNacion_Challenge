@@ -26,7 +26,6 @@ export interface IPromoItem {
 }
 
 export interface IPromoItemBasic {
-  resizedUrls: any[]
   subtitle: string
   type: string
   url: string
