@@ -1,44 +1,32 @@
 import React, { type ReactElement } from 'react'
+import { useArticleContext } from '../../contexts/ArticleProvider'
 import useServices from '../../custumHook/useService'
-import { type ITag, type IArticle } from '../../interfaces/IArticle'
+import { type IArticle } from '../../interfaces/IArticle'
+import { getTags } from '../../utils/functios'
+
 import { Article } from '../Article/Article'
 
 const ArticleList = (): ReactElement => {
   const [articles, setArticles] = React.useState<IArticle[]>([])
-  console.log(articles)
   const [results, error] = useServices()
-  const getTags = (articles: IArticle[]): string[] => {
-    const tags: string[] = []
-    articles.forEach((article: IArticle) => {
-      article.taxonomy.tags.forEach((tag: ITag) => {
-        tags.push(tag.text)
-      })
-    })
-    return tags
-  }
+  const { setTags } = useArticleContext()
 
   const getArticlesWithTagsOrder = (articles: IArticle[]): IArticle[] => {
-    const newArray = articles.map((article: IArticle) => {
-      article.taxonomy.tags.forEach((tag: ITag) => {
-        tag.count = getTags(articles).filter(
-          (item: string) => item === tag.text
-        ).length
-      })
-      article.taxonomy.tags.sort((a: ITag, b: ITag) =>
-        a.text > b.text ? -1 : a.text < b.text ? 1 : 0
-      )
-      return article
-    })
+    const newArray = articles.filter((item: IArticle) => item.subtype === '7')
+
     return newArray
   }
 
   if (results === null) <></>
   React.useEffect(() => {
-    console.log('Error')
+    if (error !== null) console.error('Error')
   }, [error])
 
   React.useEffect(() => {
     if (results !== null && results?.articles.length > 0) {
+      const tags = getTags(articles).slice(0, 10)
+
+      setTags(tags)
       setArticles(getArticlesWithTagsOrder(results.articles))
     }
   }, [results])

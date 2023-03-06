@@ -1,7 +1,7 @@
 export interface IArticle {
   display_date: string
-  headlines: any
-  promo_items: any
+  headlines: IHeadline
+  promo_items: IPromoItem
   subtype: string
   taxonomy: ITags
   website_url: string
@@ -15,4 +15,19 @@ export interface ITag {
 }
 export interface ITags {
   tags: ITag[]
+}
+
+export interface IHeadline {
+  basic: string
+}
+
+export interface IPromoItem {
+  basic: IPromoItemBasic
+}
+
+export interface IPromoItemBasic {
+  resizedUrls: any[]
+  subtitle: string
+  type: string
+  url: string
 }
